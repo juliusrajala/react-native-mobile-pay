@@ -1,0 +1,33 @@
+{
+  "name": "react-native-mobile-pay",
+  "title": "React Native Mobile Pay",
+  "version": "1.0.0",
+  "description": "TODO",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/identiofi/react-native-mobile-pay.git",
+    "baseUrl": "https://github.com/identiofi/react-native-mobile-pay"
+  },
+  "keywords": [
+    "react-native",
+    "mobile-pay",
+    "danske"
+  ],
+  "author": {
+    "name": "Julius Rajala",
+    "email": "julius@identio.fi"
+  },
+  "license": "https://github.com/MobilePayDev/MobilePay-AppSwitch-SDK/blob/master/LICENSE",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md",
+  "peerDependencies": {
+    "react-native": ">=0.61.4"
+  },
+  "devDependencies": {
+    "react-native": "^0.61.4"
+  }
+}
