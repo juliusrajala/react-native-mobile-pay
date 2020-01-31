@@ -2,12 +2,12 @@
 // Updated by Julius Rajala on 29.01.2020
 // Copyright (c) 2017 Facebook. All rights reserved.
 
-#import "RNMobilePay.h"
+#import "RnMobilePay.h"
 #import "MobilePayManager.h"
-#import "RNMobilePayHandler.h"
+#import "RnMobilePayHandler.h"
 
 
-@implementation RNMobilePay {
+@implementation RnMobilePay {
 }
 
 RCT_EXPORT_MODULE();
@@ -20,12 +20,12 @@ RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(setup:(NSString *)merchantId country:(MobilePayCountry)country merchantUrlScheme:(NSString *)merchantUrlScheme)
 {
-    [[RNMobilePayHandler sharedInstance] setup:merchantId country:country merchantUrlScheme:merchantUrlScheme];
+    [[RnMobilePayHandler sharedInstance] setup:merchantId country:country merchantUrlScheme:merchantUrlScheme];
 }
 
 RCT_EXPORT_METHOD(createPayment:(NSString *)orderId productPrice:(float)productPrice resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
-    [[RNMobilePayHandler sharedInstance] createPayment:orderId productPrice:productPrice resolve:resolve reject:reject];
+    [[RnMobilePayHandler sharedInstance] createPayment:orderId productPrice:productPrice resolve:resolve reject:reject];
 }
 
 RCT_EXPORT_METHOD(setTimeoutSeconds:(int)seconds)
@@ -40,7 +40,7 @@ RCT_EXPORT_METHOD(setReturnSeconds:(int)seconds)
 
 RCT_EXPORT_METHOD(setCountry:(MobilePayCountry)county)
 {
-    [[RNMobilePayHandler sharedInstance] setCountry:county];
+    [[RnMobilePayHandler sharedInstance] setCountry:county];
 }
 
 RCT_EXPORT_METHOD(setCaptureType:(MobilePayCaptureType)captureType)
@@ -50,7 +50,7 @@ RCT_EXPORT_METHOD(setCaptureType:(MobilePayCaptureType)captureType)
 
 RCT_EXPORT_METHOD(setMerchantId:(NSString *)merchantId)
 {
-    [[RNMobilePayHandler sharedInstance] setMerchantId:merchantId];
+    [[RnMobilePayHandler sharedInstance] setMerchantId:merchantId];
 }
 
 - (NSDictionary *)constantsToExport {

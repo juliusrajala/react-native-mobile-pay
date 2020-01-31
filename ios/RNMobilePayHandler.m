@@ -3,10 +3,10 @@
 // Copyright (c) 2017 Facebook. All rights reserved.
 //
 
-#import "RNMobilePayHandler.h"
+#import "RnMobilePayHandler.h"
 #import "MobilePayManager.h"
 
-@implementation RNMobilePayHandler {
+@implementation RnMobilePayHandler {
     RCTPromiseResolveBlock _resolveBlock;
     RCTPromiseRejectBlock _rejectBlock;
 
@@ -17,11 +17,11 @@
 }
 
 + (instancetype)sharedInstance {
-    static RNMobilePayHandler *sharedInstance = nil;
+    static RnMobilePayHandler *sharedInstance = nil;
     static dispatch_once_t onceToken;
 
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[RNMobilePayHandler alloc] init];
+        sharedInstance = [[RnMobilePayHandler alloc] init];
     });
 
     return sharedInstance;

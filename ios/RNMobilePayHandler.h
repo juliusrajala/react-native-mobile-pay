@@ -6,7 +6,7 @@
 #import <React/RCTBridgeModule.h>
 #import "MobilePayManager.h"
 
-@interface RNMobilePayHandler : NSObject
+@interface RnMobilePayHandler : NSObject
 
 + (instancetype)sharedInstance;
 

@@ -1,0 +1,6 @@
+{
+  "watch": ["."],
+  "ext": "*",
+  "ignore": ["android/build/*", "android/.gradle/*", "**.tgz"],
+  "exec": "npm pack"
+}

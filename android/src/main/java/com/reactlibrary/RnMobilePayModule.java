@@ -1,4 +1,4 @@
-// Created by Mads Lee Jensen on 04/06/2017.
+// Original created by Mads Lee Jensen on 04/06/2017.
 // Updated by Julius Rajala on 29.01.2020
 // Copyright (c) 2017 Facebook. All rights reserved.
 
@@ -7,19 +7,19 @@ package com.reactlibrary;
 import android.app.Activity;
 import android.content.Intent;
 import com.facebook.react.bridge.*;
-import dk.danskebank.mobilepay.sdk.CaptureType;
-import dk.danskebank.mobilepay.sdk.Country;
-import dk.danskebank.mobilepay.sdk.MobilePay;
-import dk.danskebank.mobilepay.sdk.ResultCallback;
-import dk.danskebank.mobilepay.sdk.model.FailureResult;
-import dk.danskebank.mobilepay.sdk.model.Payment;
-import dk.danskebank.mobilepay.sdk.model.SuccessResult;
+import dk.mobilepay.sdk.CaptureType;
+import dk.mobilepay.sdk.Country;
+import dk.mobilepay.sdk.MobilePay;
+import dk.mobilepay.sdk.ResultCallback;
+import dk.mobilepay.sdk.model.FailureResult;
+import dk.mobilepay.sdk.model.Payment;
+import dk.mobilepay.sdk.model.SuccessResult;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RNMobilePayModule extends ReactContextBaseJavaModule {
+public class RnMobilePayModule extends ReactContextBaseJavaModule {
 
     private static final int MOBILEPAY_PAYMENT_REQUEST_CODE = 1001;
     private boolean mHasBeenSetup = false;
@@ -27,7 +27,7 @@ public class RNMobilePayModule extends ReactContextBaseJavaModule {
     private Country mCountry = Country.FINLAND;
     private int mReturnSeconds = 1;
     private int mTimeoutSeconds = 90;
-    private CaptureType mCaptyreType = CaptureType.CAPTURE;
+    private CaptureType mCaptureType = CaptureType.RESERVE;
     private Promise mPaymentPromise;
     private Payment mPayment;
 
@@ -61,7 +61,7 @@ public class RNMobilePayModule extends ReactContextBaseJavaModule {
                     }
 
                     @Override
-                    public void onCancel(string orderId) {
+                    public void onCancel(String orderId) {
                         // The payment was cancelled.
 
                         WritableMap map = Arguments.createMap();
@@ -77,7 +77,7 @@ public class RNMobilePayModule extends ReactContextBaseJavaModule {
         }
     };
 
-    public RNMobilePayModule(ReactApplicationContext reactContext) {
+    public RnMobilePayModule(ReactApplicationContext reactContext) {
         super(reactContext);
 
         reactContext.addActivityEventListener(mActivityEventListener);
@@ -113,8 +113,10 @@ public class RNMobilePayModule extends ReactContextBaseJavaModule {
         // isMobilePayInstalled(..., country) will override the setup country.
         // to workaround we instead store all the config vars, and before each payment
         // we initialize the mobilepay instance from scratch.
-        MobilePay.getInstance().init(mMerchantId, mCountry).setCaptureType(mCaptyreType)
-                .setReturnSeconds(mReturnSeconds).setTimeoutSeconds(mTimeoutSeconds);
+        MobilePay mpInstance = MobilePay.getInstance();
+        mpInstance.init(mMerchantId, mCountry);
+        mpInstance.setCaptureType(mCaptureType);
+        mpInstance.setTimeoutSeconds(mTimeoutSeconds);
 
         mPaymentPromise = promise;
 
@@ -142,7 +144,7 @@ public class RNMobilePayModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void setCaptureType(String captureType) {
-        mCaptyreType = CaptureType.valueOf(captureType);
+        mCaptureType = CaptureType.valueOf(captureType);
     }
 
     @ReactMethod
@@ -163,13 +165,10 @@ public class RNMobilePayModule extends ReactContextBaseJavaModule {
         constants.put("CAPTURE_TYPE_PARTIALCAPTURE", CaptureType.PARTIAL_CAPTURE.name());
 
         constants.put("COUNTRY_DENMARK", Country.DENMARK.name());
-        constants.put("COUNTRY_NORWAY", Country.NORWAY.name());
         constants.put("COUNTRY_FINLAND", Country.FINLAND.name());
 
         constants.put("isMobilePayInstalledDenmark",
                 MobilePay.getInstance().isMobilePayInstalled(getReactApplicationContext(), Country.DENMARK));
-        constants.put("isMobilePayInstalledNorway",
-                MobilePay.getInstance().isMobilePayInstalled(getReactApplicationContext(), Country.NORWAY));
         constants.put("isMobilePayInstalledFinland",
                 MobilePay.getInstance().isMobilePayInstalled(getReactApplicationContext(), Country.FINLAND));
         return constants;
