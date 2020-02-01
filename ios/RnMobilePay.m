@@ -1,5 +1,5 @@
 // Created by Mads Lee Jensen on 04/06/2017.
-// Updated by Julius Rajala on 29.01.2020
+// Updated by Julius Rajala on 01.02.2020
 // Copyright (c) 2017 Facebook. All rights reserved.
 
 #import "RnMobilePay.h"
@@ -55,16 +55,13 @@ RCT_EXPORT_METHOD(setMerchantId:(NSString *)merchantId)
 
 - (NSDictionary *)constantsToExport {
     return @{
-      @"CAPTURE_TYPE_CAPTURE": @(MobilePayCaptureType_Capture),
       @"CAPTURE_TYPE_RESERVE": @(MobilePayCaptureType_Reserve),
       @"CAPTURE_TYPE_PARTIALCAPTURE": @(MobilePayCaptureType_PartialCapture),
 
       @"COUNTRY_DENMARK": @(MobilePayCountry_Denmark),
-      @"COUNTRY_NORWAY": @(MobilePayCountry_Norway),
       @"COUNTRY_FINLAND": @(MobilePayCountry_Finland),
 
       @"isMobilePayInstalledDenmark": @([[MobilePayManager sharedInstance] isMobilePayInstalled:MobilePayCountry_Denmark]),
-      @"isMobilePayInstalledNorway": @([[MobilePayManager sharedInstance] isMobilePayInstalled:MobilePayCountry_Norway]),
       @"isMobilePayInstalledFinland": @([[MobilePayManager sharedInstance] isMobilePayInstalled:MobilePayCountry_Finland]),
     };
 }

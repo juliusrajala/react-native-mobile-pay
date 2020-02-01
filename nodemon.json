@@ -2,5 +2,5 @@
   "watch": ["."],
   "ext": "*",
   "ignore": ["android/build/*", "android/.gradle/*", "**.tgz"],
-  "exec": "npm pack"
+  "exec": "npm run clean && npm pack"
 }

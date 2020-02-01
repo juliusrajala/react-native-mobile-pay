@@ -109,10 +109,7 @@ public class RnMobilePayModule extends ReactContextBaseJavaModule {
                     "MobilePay has not been setup. Please call setup(merchantId, country, merchantUrlScheme) first.");
         }
 
-        // seems theres a bug in mobilepay SDK 1.8.1 where calling
-        // isMobilePayInstalled(..., country) will override the setup country.
-        // to workaround we instead store all the config vars, and before each payment
-        // we initialize the mobilepay instance from scratch.
+        // Test if this works without the hack.
         MobilePay mpInstance = MobilePay.getInstance();
         mpInstance.init(mMerchantId, mCountry);
         mpInstance.setCaptureType(mCaptureType);
@@ -162,7 +159,7 @@ public class RnMobilePayModule extends ReactContextBaseJavaModule {
         final Map<String, Object> constants = new HashMap<>();
 
         constants.put("CAPTURE_TYPE_RESERVE", CaptureType.RESERVE.name());
-        constants.put("CAPTURE_TYPE_PARTIALCAPTURE", CaptureType.PARTIAL_CAPTURE.name());
+        constants.put("CAPTURE_TYPE_PARTIAL", CaptureType.PARTIAL_CAPTURE.name());
 
         constants.put("COUNTRY_DENMARK", Country.DENMARK.name());
         constants.put("COUNTRY_FINLAND", Country.FINLAND.name());

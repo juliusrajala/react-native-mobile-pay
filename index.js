@@ -1,5 +1,13 @@
 import { NativeModules } from "react-native";
 
-const { RnMobilePay } = NativeModules;
+console.log("RnMobilePay is", NativeModules.RnMobilePay);
 
-export default RnMobilePay;
+function helper() {
+  console.log("Helper here, RnMobilepay is", NativeModules.RnMobilePay);
+  console.log("Helper here, NativeModules", NativeModules);
+}
+
+module.exports = {
+  helper,
+  MobilePay: NativeModules.RnMobilePay
+};
