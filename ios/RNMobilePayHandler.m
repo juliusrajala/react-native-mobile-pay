@@ -54,7 +54,7 @@
     _merchantId = merchantId;
 }
 
-- (void)createPayment:(NSString *)orderId productPrice:(float)productPrice resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
+- (void)createPayment:(NSString *)orderId productPrice:(NSDecimalNumber * _Nonnull)productPrice resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
 {
     if (!_hasBeenSetup) {
         reject(@"-1", @"MobilePay has not been setup. Please call setup(merchantId, country, merchantUrlScheme) first.", nil);
@@ -97,7 +97,7 @@
         });
 
         [self cleanupHandlers];
-    } error:^(NSError * _Nonnull error) {
+    } error:^(NSError * _Nullable error) {
         NSDictionary *dict = error.userInfo;
         NSString *errorMessage = [dict valueForKey:NSLocalizedFailureReasonErrorKey];
         NSLog(@"MobilePay purchase failed:  Error code '%li' and message '%@' %@",(long)error.code, errorMessage, error);

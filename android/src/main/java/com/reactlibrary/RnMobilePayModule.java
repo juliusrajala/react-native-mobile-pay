@@ -2,7 +2,7 @@
 // Updated by Julius Rajala on 29.01.2020
 // Copyright (c) 2017 Facebook. All rights reserved.
 
-package com.reactlibrary;
+package com.rnmobilepay;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -79,7 +79,7 @@ public class RnMobilePayModule extends ReactContextBaseJavaModule {
 
     public RnMobilePayModule(ReactApplicationContext reactContext) {
         super(reactContext);
-
+        System.out.println("Setting up mobile pay module");
         reactContext.addActivityEventListener(mActivityEventListener);
     }
 
@@ -90,7 +90,7 @@ public class RnMobilePayModule extends ReactContextBaseJavaModule {
 
     @Override
     public String getName() {
-        return "RNMobilePay";
+        return "RnMobilePay";
     }
 
     @ReactMethod
