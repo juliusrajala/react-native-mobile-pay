@@ -1,8 +1,8 @@
 {
   "name": "react-native-mobile-pay",
   "title": "React Native Mobile Pay",
-  "version": "1.0.0",
-  "description": "TODO",
+  "version": "0.1.0",
+  "description": "React native wrapper around the Mobile Pay AppSwitch SDK",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -31,6 +31,6 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.2",
-    "react-native": "^0.61.4"
+    "react-native": "~0.62.2"
   }
 }
