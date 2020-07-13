@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   # s.license    = { :type => "MIT", :file => "FILE_LICENSE" }
   s.authors      = { "Julius Rajala" => "julius@identio.fi" }
   s.platforms    = { :ios => "9.0" }
-  s.source       = { :git => "https://github.com/identiofi/react-native-mobile-pay.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/juliusrajala/react-native-mobile-pay.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,swift}"
   s.requires_arc = true

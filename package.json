@@ -11,8 +11,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/identiofi/react-native-mobile-pay.git",
-    "baseUrl": "https://github.com/identiofi/react-native-mobile-pay"
+    "url": "git+https://github.com/juliusrajala/react-native-mobile-pay.git",
+    "baseUrl": "https://github.com/juliusrajala/react-native-mobile-pay"
   },
   "keywords": [
     "react-native",
