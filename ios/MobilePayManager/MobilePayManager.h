@@ -57,7 +57,7 @@ typedef void(^MobilePayCallbackCancelBlock)(NSString * __nullable orderId);
 typedef void(^MobilePayPaymentSuccessBlock)(MobilePaySuccessfulPayment * __nullable mobilePaySuccessfulPayment);
 typedef void(^MobilePayPaymentErrorBlock)(MobilePayErrorPayment * __nullable mobilePayErrorPayment);
 typedef void(^MobilePayPaymentCancelledBlock)(MobilePayCancelledPayment * __nullable mobilePayCancelledPayment);
-                                           
+
 @interface MobilePayManager : NSObject
 
 + (MobilePayManager * __nonnull) sharedInstance;
@@ -147,7 +147,7 @@ typedef void(^MobilePayPaymentCancelledBlock)(MobilePayCancelledPayment * __null
 /**
  *Checks if url can be opened, and it will only for check for the appstore version of MobilePay
  *
- *Currently the mobilepay app is available in three countries, and each 'Country' has it's own urlscheme:
+ *Currently the mobilepay app is available in two countries, and each 'Country' has it's own urlscheme:
  *
  *Denmark: mobilepay://
  *Finland: mobilepayfi://
@@ -161,14 +161,7 @@ typedef void(^MobilePayPaymentCancelledBlock)(MobilePayCancelledPayment * __null
  * <string>yourotherurlschemes</string>
  * </array>
  *
- *if you want to check for the Norwegian version of MobilePay, then add the following:
- * <key>LSApplicationQueriesSchemes</key>
- * <array>
- * <string>mobilepayno</string>
- * <string>yourotherurlschemes</string>
- * </array>
- *
- *if you want to check for the Finish version of MobilePay, then add the following:
+ *if you want to check for the Finnish version of MobilePay, then add the following:
  * <key>LSApplicationQueriesSchemes</key>
  * <array>
  * <string>mobilepayfi</string>

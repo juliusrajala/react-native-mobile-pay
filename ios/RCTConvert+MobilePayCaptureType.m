@@ -12,9 +12,8 @@
 RCT_ENUM_CONVERTER(
    	MobilePayCaptureType,
    	(@{
-      @"MobilePayCaptureType_Capture": @(MobilePayCaptureType_Capture), // TODO: See if this should be removed.
       @"MobilePayCaptureType_Reserve": @(MobilePayCaptureType_Reserve),
       @"MobilePayCaptureType_PartialCapture": @(MobilePayCaptureType_PartialCapture)
-  	}), MobilePayCaptureType_Capture, integerValue
+  	}), MobilePayCaptureType_Reserve, integerValue
 )
 @end

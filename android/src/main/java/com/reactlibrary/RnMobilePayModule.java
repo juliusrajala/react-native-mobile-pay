@@ -135,11 +135,6 @@ public class RnMobilePayModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void setReturnSeconds(int seconds) {
-        mReturnSeconds = seconds;
-    }
-
-    @ReactMethod
     public void setCaptureType(String captureType) {
         mCaptureType = CaptureType.valueOf(captureType);
     }

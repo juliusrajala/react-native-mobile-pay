@@ -10,6 +10,7 @@
 @implementation RnMobilePay {
 }
 
+// https://reactnative.dev/docs/native-modules-ios.html
 RCT_EXPORT_MODULE();
 
 // only allow code to be run on main-queue
@@ -31,11 +32,6 @@ RCT_EXPORT_METHOD(createPayment:(NSString *)orderId productPrice:(float)productP
 RCT_EXPORT_METHOD(setTimeoutSeconds:(int)seconds)
 {
     [[MobilePayManager sharedInstance] setTimeoutSeconds:seconds];
-}
-
-RCT_EXPORT_METHOD(setReturnSeconds:(int)seconds)
-{
-    [[MobilePayManager sharedInstance] setReturnSeconds:seconds];
 }
 
 RCT_EXPORT_METHOD(setCountry:(MobilePayCountry)county)

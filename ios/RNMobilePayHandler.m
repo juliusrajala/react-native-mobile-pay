@@ -1,10 +1,12 @@
 //
 // Created by Mads Lee Jensen on 04/06/2017.
+// Updated by Julius Rajala on 13.07.2020
 // Copyright (c) 2017 Facebook. All rights reserved.
 //
 
 #import "RnMobilePayHandler.h"
 #import "MobilePayManager.h"
+#import "MobilePayErrorPayment.h"
 
 @implementation RnMobilePayHandler {
     RCTPromiseResolveBlock _resolveBlock;
@@ -68,10 +70,10 @@
     _resolveBlock = [resolve copy];
     _rejectBlock = [reject copy];
 
-    [[MobilePayManager sharedInstance] beginMobilePaymentWithPayment:payment error:^(NSError * _Nonnull error) {
-        NSLog(@"beginMobilePaymentWithPayment - error %@", error);
+    [[MobilePayManager sharedInstance] beginMobilePaymentWithPayment:payment error:^(MobilePayErrorPayment * _Nullable mobilePayErrorPayment) {
+        NSLog(@"beginMobilePaymentWithPayment - error %@", mobilePayErrorPayment.error);
 
-        [self handleOnError:error];
+        [self handleOnError:mobilePayErrorPayment.error];
         [self cleanupHandlers];
     }];
 }
@@ -97,10 +99,10 @@
         });
 
         [self cleanupHandlers];
-    } error:^(NSError * _Nullable error) {
-        NSDictionary *dict = error.userInfo;
+    } error:^(MobilePayErrorPayment * _Nullable mobilePayErrorPayment) {
+        NSDictionary *dict = mobilePayErrorPayment.error.userInfo;
         NSString *errorMessage = [dict valueForKey:NSLocalizedFailureReasonErrorKey];
-        NSLog(@"MobilePay purchase failed:  Error code '%li' and message '%@' %@",(long)error.code, errorMessage, error);
+        NSLog(@"MobilePay purchase failed:  Error code '%li' and message '%@' %@",(long)mobilePayErrorPayment.error.code, errorMessage, mobilePayErrorPayment.error);
 
 
         //TODO: show an appropriate error message to the user. Check MobilePayManager.h for a complete description of the error codes
@@ -110,7 +112,7 @@
         //    NSLog(@"You must update your MobilePay app");
         //}
 
-        [self handleOnError:error];
+        [self handleOnError:mobilePayErrorPayment.error];
         [self cleanupHandlers];
 
     } cancel:^(MobilePayCancelledPayment * _Nullable mobilePayCancelledPayment) {
